@@ -8,6 +8,10 @@ const Head = () => {
                   <div className="logo">
                       <h1>FLASHWASH</h1>
                   </div>
+
+                  <div className="social">
+                    <i classaName="fab fa-facebook"></i>
+                  </div>
               </div>
         </section>
     </div>
