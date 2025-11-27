@@ -5,28 +5,66 @@
 .logo{
     font-style: 35px;
     font-weight: 900;
-    color: lightskyblue;
+    color: #042764;
+    padding-top: 20px;
 }
 
-button{
+.container{
+    display: flex;
+}
+
+.pickup-btn{
 background-color: lightskyblue;
 color: white;
 border-radius: 30px;
+border:solid black 3px;
 padding: 10px 20px;
+cursor: pointer;
+}
+
+.pickup-btn:hover{
+    color: black;
+    background-color:transparent;
 }
 
 nav ul li{
     list-style: none;
     display: inline-block;
-    margin: 10px 20px;;
+    margin:0 20px;
+    padding-left: 20px;
 }
 nav ul li a{
     text-decoration: none;
-    color: black;
+    color: white;
     font-weight: 400;
     cursor: pointer;
 }
 
 nav ul li a:hover{
     color: lightskyblue;
+}
+
+.nav-btn{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #042764;
+    color: white;
+    cursor: pointer;
+}
+
+.nav-btn span{
+    border-radius: 50%;
+    background-color: white;
+    width: 50%;
+    margin-left: 10px;
+}
+.nav-btn span i{
+    color: #042764;}
+    
+.toggle{
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+
 }

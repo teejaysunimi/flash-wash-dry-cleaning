@@ -1,23 +1,28 @@
 import React from 'react'
 import "./hero.css"
+import image1 from "./images/m1.png"
+
+
 
 const hero = () => {
   return (
     <>
       <section className="hero">
-        <div className="contaianer1">
-          <div className="RHS">
-            <h3>Your Laundry, Our Luxury Touch</h3>
+        <div className="overlay">
+          <div className="text">
+            <h1>
+              Your Laundry,<span>Our Luxury Touch</span>
+            </h1>
             <p>
               We treat every fabric with precision and care, offering a premium
-              laundry experience designed for your comfort. Enjoy same-day
-              service, delicate handling, and a fresh finish — all without
-              leaving your home.
+              laundry experience designed for your comfort.
             </p>
-          </div>
-          <div className="LHS">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia illo nulla maiores?</p>
-            <img src="/src/componets/images/bg1.jpg" alt="" />
+            <button className="nav-btn">
+                  Explore Services
+                  <span>
+                    <i class="fa-solid fa-arrow-right"></i>
+              </span>
+              </button>
           </div>
         </div>
       </section>
