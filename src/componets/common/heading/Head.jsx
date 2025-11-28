@@ -15,9 +15,9 @@ import { Link } from 'react-router-dom'
           </div>
           <nav className="navbar">
             {/* Hamburger button  */}
-            <div className="nav-menu-icon" onclick={() => setClick(!click)}> <i class="fa-solid fa-bars"></i></div>
+            <div className="nav-menu-icon" onClick={() => setClick(!click)}> <i class="fa-solid fa-bars"></i></div>
             <ul
-            className={click ? "nav-menu active" : "nav-menu"}
+            className={click ? "nav-links active" : "nav-links"}
             >
               <li>
                 <a href="#Home">Home</a>

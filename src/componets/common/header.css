@@ -54,6 +54,7 @@ nav ul li a:hover{
 
 .nav-btn span{
     border-radius: 50%;
+    padding: 1px;
     background-color: white;
     width: 50%;
     margin-left: 10px;
@@ -61,10 +62,45 @@ nav ul li a:hover{
 .nav-btn span i{
     color: #042764;}
     
-.toggle{
+/* Hamburger icon (hidden on desktop) */
+.nav-menu-icon{
     display: none;
+    font-size: 28px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 400px;
+    position:absolute;
 }
 
-@media screen and (max-width: 768px) {
+/* Mobile responsiveness */
+@media (max-width:768px){
+    .nav-menu-icon{
+        display: block;
+        position: relative;
+    }
 
+    .nav-links{
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        background: white;
+    }
+
+    .nav-links  li a{
+        color: black;
+    }
+
+    .nav-links.active{
+        display: flex;
+    }
+
+    .nav-btn{
+        width: 150px;
+        margin: 10px auto;
+    }
 }
