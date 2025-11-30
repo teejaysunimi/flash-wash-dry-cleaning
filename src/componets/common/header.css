@@ -68,7 +68,7 @@ nav ul li a:hover{
     font-size: 28px;
     cursor: pointer;
     margin-top: 20px;
-    margin-left: 400px;
+    margin-left: 350px;
     position:absolute;
 }
 
@@ -76,7 +76,8 @@ nav ul li a:hover{
 @media (max-width:768px){
     .nav-menu-icon{
         display: block;
-        position: relative;
+        position: absolute
+        ;
     }
 
     .nav-links{
@@ -91,8 +92,14 @@ nav ul li a:hover{
         background: white;
     }
 
+    .nav-links li{
+        margin-bottom: 10px;
+    }
+
     .nav-links  li a{
         color: black;
+        margin-bottom: 20px;
+
     }
 
     .nav-links.active{
@@ -100,7 +107,7 @@ nav ul li a:hover{
     }
 
     .nav-btn{
-        width: 150px;
+        width: 200px;
         margin: 10px auto;
     }
 }

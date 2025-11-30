@@ -15,27 +15,28 @@ import { Link } from 'react-router-dom'
           </div>
           <nav className="navbar">
             {/* Hamburger button  */}
-            <div className="nav-menu-icon" onClick={() => setClick(!click)}> <i class="fa-solid fa-bars"></i></div>
-            <ul
-            className={click ? "nav-links active" : "nav-links"}
-            >
+            <div className="nav-menu-icon" onClick={() => setClick(!click)}>
+              {" "}
+              <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul className={click ? "nav-links active" : "nav-links"}>
               <li>
-                <a href="#Home">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="#Home">Sevices</a>
+                <Link to="/services">Services</Link>
               </li>
               <li>
-                <a href="#Home">Projects</a>
+                <Link to="/projects">Projects</Link>
               </li>
               <li>
-                <a href="#Home">Pages</a>
+                <Link to="/pages">Pages</Link>
               </li>
               <li>
-                <a href="#Home">Blog</a>
+                <Link to="/blog">Blog</Link>
               </li>
               <li>
-                <a href="#Home">Contact Us</a>
+                <Link to="/contact">Contact Us</Link>
               </li>
 
               <li>
