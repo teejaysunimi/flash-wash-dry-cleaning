@@ -2,12 +2,14 @@ import React from 'react'
 import Hero from "./hero"
 
 
-const home = () => {
+
+const Home = () => {
   return (
-      <Hero />
+    <Hero />
+    
   )
   
 }
 
-export default home
+export default Home
 

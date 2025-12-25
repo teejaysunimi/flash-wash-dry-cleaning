@@ -1,13 +1,13 @@
 import React from 'react'
 import "./hero.css"
-import image1 from "./images/m1.png"
+
 
 
 
 const hero = () => {
   return (
     <>
-      <section className="hero">
+      <section className="hero-wrapper">
         <div className="overlay">
           <div className="text">
             <h1>

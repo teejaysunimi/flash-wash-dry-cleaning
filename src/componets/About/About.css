@@ -1,0 +1,81 @@
+.About-Us{
+    display: flex;
+    height: auto;
+}
+
+.image-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0px;
+    margin-top: 90px;   
+
+}
+
+.LHS{
+    width: 40%;}
+
+.LHS img{
+       border-radius: 8px;
+       cursor: pointer;
+}
+
+.LHS img:hover{
+   transform: scale(1.2) rotate(5deg);
+}
+.base-image{
+    width: 30%;
+    margin-left: 300px;
+}
+ 
+.overlay-image{
+    position: relative;
+     bottom: -20px;
+     right: -150px;
+    width: 30%;   
+}
+
+.image2{
+    position: relative;
+    width: 30%;
+    bottom: 84px;
+     right:40px;
+}
+
+.image3{
+     position: relative;
+    width: 30%;
+    bottom: 324px;
+     right:40px;
+ 
+}
+
+.RHS{
+    width: 60%;
+    padding-top: 50px;   
+}
+.RHS h3{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.RHS h1{
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.RHS h1 span{
+    color: #042764;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.RHS ul li{
+    padding: 5px;
+}
+
+.RHS ul li i{
+    color:#042764;
+}
