@@ -5,9 +5,7 @@ import "./componets/common/header.css"
 import Home from "./componets/common/home/hero/home.jsx";
 import About from "./componets/About/About.jsx";
 import Image from "./componets/pic3.jpg"
-
-
-
+import AuthModal from "./componets/Auth/AuthModal.jsx";
 function App () {
     return (
       <Router>
@@ -19,6 +17,7 @@ function App () {
           </Routes>
         </div>
         <About/>
+        <AuthModal/>
       </Router>
      
     );  
