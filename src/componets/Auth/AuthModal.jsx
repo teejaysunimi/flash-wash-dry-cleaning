@@ -17,11 +17,11 @@ import Image4 from '../common/images/OX.png';
         </div>
       </div>
 
-      <div className="RHS">
+      <div className="RH">
         <div className="header">
           <div className="text">Create Account</div>
         </div>
-        <div className="inputs">
+        <div className="inputs-container">
           <div className="inputs">
             <i class="fa-solid fa-user"></i>
             <input type="text" placeholder="Full Name" />
@@ -33,8 +33,8 @@ import Image4 from '../common/images/OX.png';
           <div className="inputs">
             <i class="fa-solid fa-lock"></i>
             <input type="password" placeholder="Password" />
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa-solid fa-eye-slash"></i>
+            {/* <i class="fa-solid fa-eye"></i>
+            {/* <i class="fa-solid fa-eye-slash"></i> */} 
           </div>
         </div>
         <div className="text-1">
@@ -54,12 +54,6 @@ import Image4 from '../common/images/OX.png';
           <i class="fa-brands fa-google"></i>
         </div>
       </div>
-
-      {/* <div className="header">
-        
-        <div className="underline"></div>
-      </div>
-       */}
     </div>
   );
 }
