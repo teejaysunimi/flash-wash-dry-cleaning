@@ -6,20 +6,22 @@ import Home from "./componets/common/home/hero/home.jsx";
 import About from "./componets/About/About.jsx";
 import Image from "./componets/pic3.jpg"
 import AuthModal from "./componets/Auth/AuthModal.jsx";
-function App () {
+import { useState } from "react"; 
+function App() {
+   const [showAuth, setShowAuth] = useState(false);
+
     return (
       <Router>
         {/* General wrapper */}
         <div className="bg-wrapper">
-          <Header />
+          <Header onAuthOpen={() => setShowAuth(true)} />
           <Routes>
-            <Route path="/" element={<Home />} />   
+            <Route path="/" element={<Home />} />
           </Routes>
         </div>
-        <About/>
-        <AuthModal/>
+        <About onAuthOpen={() => setShowAuth(true)} />
+        <AuthModal show={showAuth} onClose={() => setShowAuth(false)} />
       </Router>
-     
     );  
 }
     export default App; 

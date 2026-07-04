@@ -1,75 +1,101 @@
-.containers{
-    display: flex;
-    height: 100vh;
-    margin-left: 80px;
-    background-color: #c164b9;
-    width: 90%;
-    border-top-left-radius: 50px;
-    
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Instrument+Serif:ital@0;1&display=swap');
+
+/* ── Overlay: covers the entire screen ── */
+.auth-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow-y: auto;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-.LHs{
-    /* background-color: #c164b9; */
-    color: white;
-    flex: 0.1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-   
+/* ── Split grid ── */
+.auth-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
 }
 
-.LHs h1{
-    text-align: center;
-    color: white;
+/* ── Left panel ── */
+.auth-left-panel {
+  display: block;
 }
 
-.LHs h2{
-    text-align: center;
-    font-size: larger;
-    font-weight: 900;
-}
-.RH{
-background-color:white ;
-border-radius: 20px;
-margin-right: 20px;
-margin-left: 100px;
-width: 100%;
-}
-.RH .header{
-    padding: 40px 40px 0px 40px;
-    font-size: xx-large;
-    font-weight: 900;
-
+/* ── Right panel ── */
+.auth-right-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+  background: #F7F6F3;
 }
 
-.inputs{
-   position: relative;
-   margin-bottom: 18px;
+/* ── Form card ── */
+.auth-card {
+  width: 100%;
+  max-width: 420px;
 }
 
-.inputs input {
-  /* width: 100%; */
-  margin-left: 40px;
-  padding: 14px 14px 14px 44px;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  font-size: 15px;
-  outline: none;
-  transition: border 0.3s;
+/* ── Close button ── */
+.auth-close-btn {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 1100;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid #E8E6E1;
+  background: #ffffff;
+  color: #4A4844;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
 }
 
-.inputs input:focus {
-  border-color: #2563eb;
+.auth-close-btn:hover {
+  background: #F7F6F3;
+  color: #1A1917;
 }
 
-.inputs i {
-    margin-left: 40px;
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #9ca3af;
-  pointer-events: none;
+/* ── Tab enter animation ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.auth-view-enter {
+  animation: fadeUp 0.22s ease;
+}
+
+/* ── Placeholders ── */
+.auth-overlay input::placeholder,
+.auth-overlay textarea::placeholder {
+  color: #A09D96;
+}
+
+/* ── Responsive: single column on mobile ── */
+@media (max-width: 768px) {
+  .auth-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-left-panel {
+    display: none;
+  }
+
+  .auth-right-panel {
+    padding: 56px 24px 40px;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-view-enter {
+    animation: none;
+  }
 }

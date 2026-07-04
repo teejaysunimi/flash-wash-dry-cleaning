@@ -1,10 +1,24 @@
 import { click } from '@testing-library/user-event/dist/click';
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import AuthModal from '../../Auth/AuthModal';   
 
 
   const Navbar = () => {
     const [click, setClick] = useState(false);
+    const [showAuthModal, setShowAuthModal] = useState(false);   
+    const [authMode, setAuthMode] = useState("login");
+
+   
+
+     const handleSchedulePickup = () => {
+       setAuthMode("login");
+       setShowAuthModal(true);
+     };
+
+     const closeModal = () => {
+       setShowAuthModal(false);
+     };
   
   return (
     <>
@@ -40,7 +54,7 @@ import { Link } from 'react-router-dom'
               </li>
 
               <li>
-                <button className="nav-btn">
+                <button onClick={handleSchedulePickup} className="nav-btn">
                   Schedule A Pickup
                   <span>
                     <i class="fa-solid fa-arrow-right"></i>
@@ -51,6 +65,11 @@ import { Link } from 'react-router-dom'
           </nav>
         </div>
       </section>
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={closeModal}
+        initialMode={authMode}
+      />
     </>
   );
 }
