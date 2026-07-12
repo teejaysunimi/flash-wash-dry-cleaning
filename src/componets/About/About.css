@@ -1,56 +1,62 @@
 .About-Us{
     display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 40px;
     height: auto;
-}
-
-.image-wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-left: 0px;
-    margin-top: 90px;   
-
+    padding: 0 20px;
 }
 
 .LHS{
-    width: 40%;}
-
-.LHS img{
-       border-radius: 8px;
-       cursor: pointer;
+    flex: 1 1 320px;
+    max-width: 40%;
 }
 
+.image-wrapper{
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1 / 1;
+    margin: 90px auto 0;
+}
+
+.image-wrapper img{
+    position: absolute;
+    width: 55%;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
 
 .base-image{
-    width: 30%;
-    margin-left: 300px;
+    top: 0;
+    right: 0;
+    z-index: 1;
 }
- 
+
 .overlay-image{
-    position: relative;
-     bottom: -20px;
-     right: -150px;
-    width: 30%;   
+    top: 14%;
+    left: 0;
+    z-index: 2;
 }
 
 .image2{
-    position: relative;
-    width: 30%;
-    bottom: 84px;
-     right:40px;
+    top: 32%;
+    left: 12%;
+    z-index: 3;
 }
 
 .image3{
-     position: relative;
-    width: 30%;
-    bottom: 324px;
-     right:40px;
- 
+    top: 50%;
+    left: 24%;
+    z-index: 4;
 }
 
 .RHS{
-    width: 60%;
-    padding-top: 50px;   
+    flex: 1 1 320px;
+    max-width: 60%;
+    padding-top: 50px;
 }
 .RHS h3{
     font-size: 20px;
@@ -58,7 +64,7 @@
 }
 
 .RHS h1{
-    font-size: 36px;
+    font-size: clamp(1.75rem, 3.5vw, 36px);
     margin-bottom: 20px;
 }
 
@@ -66,8 +72,13 @@
     color: #042764;
 }
 
+.RHS p{
+    max-width: 55ch;
+}
+
 ul{
     list-style-type: none;
+    padding-left: 0;
 }
 
 .RHS ul li{
@@ -76,4 +87,39 @@ ul{
 
 .RHS ul li i{
     color:#042764;
+}
+
+/* Tablet: collage still overlaps, just narrower */
+@media (max-width: 900px){
+    .LHS, .RHS{
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .image-wrapper{
+        margin-top: 40px;
+    }
+
+    .RHS{
+        padding-top: 20px;
+    }
+}
+
+/* Mobile: drop the images entirely, show the list alone */
+@media (max-width: 600px){
+    .LHS{
+        display: none;
+    }
+
+    .RHS{
+        max-width: 100%;
+        flex: 1 1 100%;
+        padding-top: 20px;
+    }
+
+    .RHS h3{
+        text-align: center;
+    }
+
+    
 }

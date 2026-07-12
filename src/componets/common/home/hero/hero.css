@@ -1,15 +1,26 @@
 .overlay{
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
     width: 100%;
     padding: 100px 60px;
+    box-sizing: border-box;
+}
+
+.overlay .text{
+    flex: 1 1 480px;
+    max-width: 600px;
 }
 
 .overlay h1{
     color:#ffffff;
-    font-size: 5rem;
+    font-size: clamp(2.25rem, 5vw, 5rem);
+    line-height: 1.15;
     padding-bottom: 20px;
-    width: 60%;
+    width: 100%;
 }
 
 .overlay h1 span{
@@ -17,51 +28,81 @@
 }
 
 .overlay p{
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
     word-spacing: 2px;
     font-weight: 500;
     color: white;
-    width: 40%;
+    width: 100%;
+    max-width: 500px;
+}
+
+.hero-image{
+    flex: 1 1 320px;
+    display: flex;
+    justify-content: center;
 }
 
 .hero-image img{
-    height: 20rem;
-    width: 40rem;
-    /* padding-left: 9rem; */
-    /* border-radius: 5rem; */
+    width: 100%;
+    max-width: 40rem;
+    height: auto;
+    object-fit: cover;
 }
 
-button{
+.overlay button{
     margin-top: 20px;
     background-color: #042764;
     border-radius: 10px;
     color: white;
     cursor: pointer;
-    
 }
 
-.nav-btn span{
-    padding: 3px;
-}
-
-.text p{
-
-}
 .btn{
     display: flex;
 }
 
-@media screen and (max-width:768px) {
+.nav-btn a{
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+@media screen and (max-width: 768px) {
     .hero{
         background-position: center;
     }
 
-     .overlay h1{
+    .hero-image{
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .overlay{
+        flex-direction: column;
+        padding: 90px 30px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .overlay .text{
+        max-width: 100%;
+    }
+
+    .overlay h1{
         padding-top: 20px;
-        width: 120%;
     }
 
     .overlay p{
-        width: 60%;
+        margin: 0 auto;
+    }
+
+    .btn{
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .overlay{
+        padding: 40px 20px;
     }
 }

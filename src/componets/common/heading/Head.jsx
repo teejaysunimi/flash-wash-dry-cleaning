@@ -38,14 +38,9 @@ import AuthModal from '../../Auth/AuthModal';
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/services">Services</Link>
+                <Link to="/src/componets/About/About.jsx">Services</Link>
               </li>
-              <li>
-                <Link to="/projects">Projects</Link>
-              </li>
-              <li>
-                <Link to="/pages">Pages</Link>
-              </li>
+          
               <li>
                 <Link to="/blog">Blog</Link>
               </li>

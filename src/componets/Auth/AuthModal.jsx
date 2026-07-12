@@ -242,8 +242,8 @@ const LeftPanel = () => (
         lineHeight: 1.15, color: "#fff",
         letterSpacing: "-0.5px", marginBottom: 24,
       }}>
-        Find your people,<br />
-        <em style={{ fontStyle: "italic", opacity: 0.82 }}>build something together.</em>
+        Bringing Peace of Mind,<br />
+        <em style={{ fontStyle: "italic", opacity: 0.82 }}>with Every Clean Cloth.</em>
       </h1>
       <p style={{ fontSize: 15, lineHeight: 1.65, color: "rgba(255,255,255,0.68)", maxWidth: 320 }}>
         Gather connects you with communities around the things that actually matter to you — not the algorithm's idea of what should.

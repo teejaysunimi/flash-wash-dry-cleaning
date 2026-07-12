@@ -18,7 +18,7 @@ const hero = () => {
               laundry experience designed for your comfort.
             </p>
             <button className="nav-btn">
-                  Explore Services
+                  <a href="#About">Explore Services</a>
                   <span>
                     <i class="fa-solid fa-arrow-right"></i>
               </span>
