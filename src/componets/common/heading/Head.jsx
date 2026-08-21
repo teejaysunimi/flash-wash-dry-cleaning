@@ -1,6 +1,6 @@
 import { click } from '@testing-library/user-event/dist/click';
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link , useNavigate, useLocation } from 'react-router-dom'
 import AuthModal from '../../Auth/AuthModal';   
 
 
@@ -8,8 +8,38 @@ import AuthModal from '../../Auth/AuthModal';
     const [click, setClick] = useState(false);
     const [showAuthModal, setShowAuthModal] = useState(false);   
     const [authMode, setAuthMode] = useState("login");
+        const navigate = useNavigate();
 
-   
+    const location = useLocation();
+
+
+         const scrollToServices = (e) => {
+
+       e.preventDefault();
+
+       setClick(false);
+
+       if (location.pathname !== "/") {
+
+         navigate("/");
+
+         setTimeout(() => {
+
+           document.getElementById("About")?.scrollIntoView({ behavior: "smooth" });
+
+         }, 100);
+
+       } else {
+
+         document.getElementById("About")?.scrollIntoView({ behavior: "smooth" });
+
+       }
+
+     };
+
+
+
+
 
      const handleSchedulePickup = () => {
        setAuthMode("login");
@@ -37,8 +67,8 @@ import AuthModal from '../../Auth/AuthModal';
               <li>
                 <Link to="/">Home</Link>
               </li>
-              <li>
-                <Link to="/src/componets/About/About.jsx">Services</Link>
+               <li>
+                <a href="#About" onClick={scrollToServices}>About</a>
               </li>
           
               <li>

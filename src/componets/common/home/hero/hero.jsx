@@ -5,6 +5,13 @@ import "./hero.css"
 
 
 const hero = () => {
+    const scrollToServices = () => {
+
+    document.getElementById("About")?.scrollIntoView({ behavior: "smooth" });
+
+  };
+
+
   return (
     <>
       <section className="hero-wrapper">

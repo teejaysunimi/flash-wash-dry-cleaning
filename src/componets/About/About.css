@@ -13,45 +13,32 @@
 }
 
 .image-wrapper{
-    position: relative;
     width: 100%;
     max-width: 420px;
-    aspect-ratio: 1 / 1;
     margin: 90px auto 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+    display: grid;
+
 }
 
 .image-wrapper img{
-    position: absolute;
-    width: 55%;
-    height: auto;
+    /* height: auto; */
     border-radius: 8px;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.base-image{
-    top: 0;
-    right: 0;
-    z-index: 1;
+.grid-image{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.overlay-image{
-    top: 14%;
-    left: 0;
-    z-index: 2;
-}
-
-.image2{
-    top: 32%;
-    left: 12%;
-    z-index: 3;
-}
-
-.image3{
-    top: 50%;
-    left: 24%;
-    z-index: 4;
-}
 
 .RHS{
     flex: 1 1 320px;
@@ -89,37 +76,42 @@ ul{
     color:#042764;
 }
 
-/* Tablet: collage still overlaps, just narrower */
-@media (max-width: 900px){
+ /* Medium screens: stack vertically, image above text */
+@media (max-width: 768px){
+    .About-Us{
+        flex-direction: column;
+    }
+ 
     .LHS, .RHS{
         max-width: 100%;
         flex: 1 1 100%;
     }
-
+ 
     .image-wrapper{
         margin-top: 40px;
     }
-
+ 
     .RHS{
         padding-top: 20px;
     }
 }
-
+ 
 /* Mobile: drop the images entirely, show the list alone */
-@media (max-width: 600px){
-    .LHS{
+ @media (max-width: 600px){
+  .About-Us{
+        flex-direction: column;
+    }  .LHS{
         display: none;
     }
-
+ 
     .RHS{
         max-width: 100%;
         flex: 1 1 100%;
         padding-top: 20px;
     }
-
+ 
     .RHS h3{
         text-align: center;
-    }
-
+    } 
     
 }

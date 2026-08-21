@@ -12,10 +12,10 @@ import Image3 from "../common/images/ironing.jpg";
         className="About-Us">
         <div className="LHS">
           <div className="image-wrapper">
-            <img src={Image} alt="Base" className="base-image" />
-            <img src={Image1} alt="Overlay" className="overlay-image" />
-            <img src={Image2} alt="" className="image2" />
-            <img src={Image3} alt="" className="image3" />
+            <img src={Image} alt="Base" className="grid-image" />
+            <img src={Image1} alt="Overlay" className="grid-image" />
+            <img src={Image2} alt="" className="grid-image" />
+            <img src={Image3} alt="" className="grid-image" />
           </div>
         </div>
         <div className="RHS">
