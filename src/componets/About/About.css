@@ -42,7 +42,6 @@
 
 .RHS{
     flex: 1 1 320px;
-    max-width: 60%;
     padding-top: 50px;
 }
 .RHS h3{
@@ -60,7 +59,8 @@
 }
 
 .RHS p{
-    max-width: 55ch;
+    width: 95%;
+    line-height: 100%;
 }
 
 ul{
@@ -114,4 +114,7 @@ ul{
         text-align: center;
     } 
     
+    .nav-btn span{
+        margin-left: 20px;
+    }
 }

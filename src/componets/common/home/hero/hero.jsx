@@ -24,8 +24,8 @@ const hero = () => {
               We treat every fabric with precision and care, offering a premium
               laundry experience designed for your comfort.
             </p>
-            <button className="nav-btn">
-                  <a href="#About">Explore Services</a>
+            <button className="hero-btn">
+                  <a href="#About" onClick={scrollToServices}>Explore Services</a>
                   <span>
                     <i class="fa-solid fa-arrow-right"></i>
               </span>

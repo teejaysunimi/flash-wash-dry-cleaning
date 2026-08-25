@@ -1,10 +1,25 @@
-import React from 'react'
+import { click } from '@testing-library/user-event/dist/click';
+import React, { useState } from 'react'
 import './About.css'
 import Image from "../common/images/OP.jpg";
 import Image1 from "../common/images/bg2.jpg";
 import Image2 from "../common/images/bg1.jpg";
 import Image3 from "../common/images/ironing.jpg";
- const About = ({onAuthOpen}) => {
+import AuthModal from '../Auth/AuthModal';   
+ const About = () => {
+
+   const [click, setClick] = useState(false);
+      const [showAuthModal, setShowAuthModal] = useState(false);   
+      const [authMode, setAuthMode] = useState("login");
+       
+   const handleSchedulePickup = () => {
+       setAuthMode("login");
+       setShowAuthModal(true);
+     };
+
+     const closeModal = () => {
+       setShowAuthModal(false);
+     };
   return (
     <>
       <section 
@@ -50,15 +65,23 @@ import Image3 from "../common/images/ironing.jpg";
               <i className="fa fa-check-circle" aria-hidden="true"></i>{" "}
               Convenient Pickup and Delivery
             </li>
+              <li>
+                <button onClick={handleSchedulePickup} className="nav-btn">
+                  Schedule A Pickup
+                  <span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                </button>
+              </li>
           </ul>
-          <button onClick={onAuthOpen} className="nav-btn">
-            Schedule A Pickup
-            <span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
-          </button>
+         
         </div>
       </section>
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={closeModal}
+        initialMode={authMode}
+      />
     </>
   );
 }
