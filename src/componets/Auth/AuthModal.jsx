@@ -80,19 +80,21 @@ const TextArea = ({ style, ...props }) => {
   );
 };
 
-const BtnPrimary = ({ children, onClick }) => {
+const BtnPrimary = ({ children, onClick, disabled }) => {
   const [hov, setHov] = useState(false);
   return (
     <button
-      onClick={onClick}
+      onClick={disabled ? undefined : onClick}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{
         width: "100%", padding: 13, marginTop: 6,
-        background: hov ? T.accentHv : T.accent,
-        color: "#fff", border: "none", borderRadius: 10,
+        background: disabled ? T.border : hov ? T.accentHv : T.accent,
+        color: disabled ? T.muted : "#fff",
+        border: "none", borderRadius: 10,
         fontFamily: "'DM Sans', sans-serif", fontSize: 15,
-        fontWeight: 600, cursor: "pointer",
+        fontWeight: 600,
+        cursor: disabled ? "not-allowed" : "pointer",
         transition: "background 0.18s",
       }}
     >
@@ -100,7 +102,6 @@ const BtnPrimary = ({ children, onClick }) => {
     </button>
   );
 };
-
 const BtnSocial = ({ icon, children }) => {
   const [hov, setHov] = useState(false);
   return (
@@ -246,7 +247,7 @@ const LeftPanel = () => (
         <em style={{ fontStyle: "italic", opacity: 0.82 }}>with Every Clean Cloth.</em>
       </h1>
       <p style={{ fontSize: 15, lineHeight: 1.65, color: "rgba(255,255,255,0.68)", maxWidth: 320 }}>
-        Gather connects you with communities around the things that actually matter to you — not the algorithm's idea of what should.
+       FlashWash connects you with cleaning that actually cares about your clothes — not just another load in the machine.
       </p>
       <div style={{ display: "flex", alignItems: "center", marginTop: 48 }}>
         {["🌿", "🎨", "🎸", "📸", "🌍"].map((em, i) => (
@@ -273,7 +274,7 @@ const LeftPanel = () => (
 );
 
 /* ─── Login view ─────────────────────────────────────── */
-const LoginView = ({ onSwitch }) => (
+const LoginView = ({ onSwitch, onGoToDashboard }) => (
   <div>
     <div style={{ marginBottom: 28 }}>
       <h2 style={{ fontFamily: "'Instrument Serif', serif", fontSize: 26, color: T.ink, marginBottom: 6 }}>
@@ -297,7 +298,7 @@ const LoginView = ({ onSwitch }) => (
       <span style={{ fontSize: 12.5, color: T.muted, cursor: "pointer" }}>Forgot password?</span>
     </div>
 
-    <BtnPrimary>Log in</BtnPrimary>
+    <BtnPrimary onClick={onGoToDashboard}>Log in</BtnPrimary>
 
     <p style={{ textAlign: "center", marginTop: 24, fontSize: 13, color: T.muted }}>
       New here? <NavLink onClick={() => onSwitch("signup")}>Create an account</NavLink>
@@ -308,6 +309,12 @@ const LoginView = ({ onSwitch }) => (
 /* ─── Sign up view ───────────────────────────────────── */
 const SignUpView = ({ onSwitch, onToProfile }) => {
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const allFilled = firstName && lastName && email && password;
+
   return (
     <div>
       <div style={{ marginBottom: 28 }}>
@@ -322,12 +329,28 @@ const SignUpView = ({ onSwitch, onToProfile }) => {
       <Divider>or use email</Divider>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 18 }}>
-        <Field label="First name"><Input type="text" placeholder="Alex" /></Field>
-        <Field label="Last name"><Input type="text" placeholder="Rivera" /></Field>
+        <Field label="First name">
+          <Input
+            type="text" placeholder="Alex"
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+          />
+        </Field>
+        <Field label="Last name">
+          <Input
+            type="text" placeholder="Rivera"
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
+          />
+        </Field>
       </div>
 
       <Field label="Email">
-        <Input type="email" placeholder="you@example.com" />
+        <Input
+          type="email" placeholder="you@example.com"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
       </Field>
 
       <Field label="Password">
@@ -338,7 +361,9 @@ const SignUpView = ({ onSwitch, onToProfile }) => {
         <StrengthBar value={password} />
       </Field>
 
-      <BtnPrimary onClick={onToProfile}>Create account</BtnPrimary>
+      <BtnPrimary onClick={onToProfile} disabled={!allFilled}>
+        Create account
+      </BtnPrimary>
 
       <p style={{ textAlign: "center", marginTop: 24, fontSize: 13, color: T.muted }}>
         Already have an account? <NavLink onClick={() => onSwitch("login")}>Log in</NavLink>
@@ -346,7 +371,6 @@ const SignUpView = ({ onSwitch, onToProfile }) => {
     </div>
   );
 };
-
 /* ─── Profile step 1: basic info ────────────────────── */
 const ProfileStep1 = ({ onNext }) => {
   const [avatar, setAvatar] = useState(null);
@@ -404,45 +428,9 @@ const ProfileStep1 = ({ onNext }) => {
   );
 };
 
-/* ─── Profile step 2: interests ─────────────────────── */
-const ProfileStep2 = ({ onNext, onBack }) => {
-  const [selected, setSelected] = useState(new Set());
-
-  const toggle = label => {
-    setSelected(prev => {
-      const next = new Set(prev);
-      next.has(label) ? next.delete(label) : next.add(label);
-      return next;
-    });
-  };
-
-  return (
-    <div>
-      <div style={{ marginBottom: 28 }}>
-        <h2 style={{ fontFamily: "'Instrument Serif', serif", fontSize: 26, color: T.ink, marginBottom: 6 }}>
-          What are you into?
-        </h2>
-        <p style={{ fontSize: 14, color: T.muted, lineHeight: 1.5 }}>
-          Pick a few topics — we'll match you with the right communities.
-        </p>
-      </div>
-
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 22 }}>
-        {INTERESTS.map(label => (
-          <Pill key={label} label={label} selected={selected.has(label)} onToggle={() => toggle(label)} />
-        ))}
-      </div>
-
-      <BtnPrimary onClick={onNext}>Finish profile →</BtnPrimary>
-      <p style={{ textAlign: "center", marginTop: 24, fontSize: 13, color: T.muted }}>
-        <NavLink onClick={onBack}>← Back</NavLink>
-      </p>
-    </div>
-  );
-};
 
 /* ─── Profile step 3: success ────────────────────────── */
-const ProfileStep3 = ({ onClose }) => (
+const ProfileStep3 = ({ onSwitchToLogin }) => (
   <div style={{ textAlign: "center", padding: "24px 0" }}>
     <div style={{
       width: 60, height: 60, borderRadius: "50%",
@@ -458,19 +446,18 @@ const ProfileStep3 = ({ onClose }) => (
     <p style={{ fontSize: 14, color: T.muted, lineHeight: 1.6, marginBottom: 28 }}>
       Your profile is live. Time to find your people and start exploring communities.
     </p>
-    <BtnPrimary onClick={onClose}>Explore Gather →</BtnPrimary>
+    <BtnPrimary onClick={ onSwitchToLogin}>Explore Flashwash →</BtnPrimary>
   </div>
 );
 
 /* ─── Profile view (multi-step) ──────────────────────── */
-const ProfileView = ({ onClose }) => {
+const ProfileView = ({  onSwitchToLogin }) => {
   const [step, setStep] = useState(1);
   return (
     <div>
       <StepDots step={step} />
-      {step === 1 && <ProfileStep1 onNext={() => setStep(2)} />}
-      {step === 2 && <ProfileStep2 onNext={() => setStep(3)} onBack={() => setStep(1)} />}
-      {step === 3 && <ProfileStep3 onClose={onClose} />}
+      {step === 1 && <ProfileStep1 onNext={() => setStep(3)} />}
+      {step === 3 && <ProfileStep3 onSwitchToLogin={ onSwitchToLogin} />}
     </div>
   );
 };
@@ -544,7 +531,7 @@ const AuthModal = ({ isOpen, onClose }) => {
             <div key={tab} className="auth-view-enter">
               {tab === "login"   && <LoginView onSwitch={setTab} />}
               {tab === "signup"  && <SignUpView onSwitch={setTab} onToProfile={() => setTab("profile")} />}
-              {tab === "profile" && <ProfileView onClose={onClose} />}
+              {tab === "profile" && <ProfileView onSwitchToLogin={() => setTab("login")} />}
             </div>
           </div>
         </div>
